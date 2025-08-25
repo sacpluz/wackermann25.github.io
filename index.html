@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lena & Sascha – Fotos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Italiana&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --peach:#f4c6a5;
+      --peach-2:#f7d6be;
+      --purple:#3b0066;
+      --purple-50:#cbb3db;
+      --text:#1f1930;
+      --white:#ffffff;
+      --radius:20px;
+      --shadow:0 10px 30px rgba(0,0,0,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:var(--peach);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      position:relative;
+      min-height:62vh;
+      display:grid;
+      place-items:end center;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero__img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      z-index:-1;
+      filter:saturate(0.98) contrast(1.02);
+    }
+    .hero__scrim{
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.0) 20%, rgba(0,0,0,.35) 75%);
+      z-index:0;
+    }
+    .hero__title{
+      color:var(--white);
+      text-align:center;
+      padding:6rem 1rem 2.25rem;
+      width:min(100%, 1100px);
+    }
+    .brand-top{font-family:"Italiana",serif; font-size:clamp(2.5rem, 5vw, 4.25rem); letter-spacing:.04em}
+    .brand-mid{font-weight:800; letter-spacing:.18em; font-size:clamp(.9rem,1.6vw,1.15rem); margin:.25rem 0 .35rem; text-transform:uppercase}
+    .brand-bot{font-family:"Italiana",serif; font-size:clamp(2.2rem,4.5vw,3.8rem);}
+
+    /* ===== Main card strip ===== */
+    .card{
+      margin:-2.25rem auto 2.75rem;
+      width:min(92%,1000px);
+      background:var(--peach);
+      border-radius:36px;
+      box-shadow:var(--shadow);
+      padding:clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .stack{display:grid; gap:clamp(14px, 1.6vw, 18px)}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      text-decoration:none; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+      padding:1.25rem 1rem; border-radius:18px; border:2px solid transparent;
+      transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
+      box-shadow:var(--shadow);
+      width:100%;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn--primary{background:var(--purple); color:var(--white)}
+    .btn--primary:hover{filter:brightness(1.05)}
+    .btn--secondary{background:var(--purple-50); color:#2a1743}
+
+    .pw{
+      text-align:center; font-weight:600; font-size:clamp(1rem, 1.8vw, 1.25rem);
+      background:var(--peach-2);
+      padding:1rem; border-radius:18px; box-shadow:var(--shadow);
+    }
+    .pw small{opacity:.9; margin-right:.4rem}
+    .pw code{
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:clamp(1.15rem, 2.4vw, 1.6rem);
+      background:rgba(255,255,255,.55);
+      padding:.15rem .5rem; border-radius:10px;
+      text-decoration:underline; text-underline-offset:6px;
+    }
+
+    footer{ text-align:center; opacity:.8; padding:1.25rem 1rem 2.5rem }
+    footer a{ color:inherit }
+
+    /* ===== Layout helpers ===== */
+    .container{ width:min(92%, 1000px); margin-inline:auto }
+
+    @media (min-width:720px){
+      .card{padding:2rem}
+      .stack{gap:20px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero with background image -->
+  <header class="hero" role="banner">
+    <!-- Replace src with your own image path if needed -->
+    <img class="hero__img" src="/mnt/data/Lena &amp; Sascha.png" alt="Brautpaar unter Bäumen" />
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="hero__title" aria-label="Titel">
+      <div class="brand-top">wacker</div>
+      <div class="brand-mid">Lena &amp; Sascha</div>
+      <div class="brand-bot">mann</div>
+    </div>
+  </header>
+
+  <!-- Buttons + password area -->
+  <main class="container" role="main">
+    <section class="card" aria-labelledby="fotos">
+      <div class="stack">
+        <a class="btn btn--primary" id="fotos" href="#hochzeits-fotos">Hochzeits Fotos</a>
+
+        <p class="pw" aria-live="polite">
+          <small>Passwort:</small>
+          <code>lenaxsascha</code>
+        </p>
+
+        <a class="btn btn--secondary" href="#fotobox-fotos">Fotobox Fotos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>© <span id="y"></span> Lena &amp; Sascha – Danke, dass ihr dabei wart</small>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('y').textContent = new Date().getFullYear()
+  </script>
+</body>
+</html>
