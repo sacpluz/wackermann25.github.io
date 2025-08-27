@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lena & Sascha – Fotos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +35,7 @@
     /* ===== Hero ===== */
     .hero{
       position:relative;
-      height:100vh;           /* Fallback */
-      min-height:100vh;
+      height:100vh;           /* full height */
       display:flex;
       flex-direction:column;
       justify-content:flex-end;  /* Card ans Ende */
@@ -44,7 +43,7 @@
       overflow:hidden;
       isolation:isolate;
       background:var(--peach);
-      padding-bottom:calc(20px + env(safe-area-inset-bottom, 0px));  /* 20px + Safe Area */
+      padding-bottom:20px;      /* Abstand unten */
     }
     .hero picture, .hero .hero__img{position:absolute; inset:0}
     .hero__img{
@@ -93,7 +92,7 @@
 
     .btn{
       display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
-      text-decoration:none; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      text-decoration:none; font-weight:700; letter-spacing:.08em;
       padding:1.25rem 1rem; border-radius:18px; border:2px solid transparent;
       transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
       box-shadow:var(--shadow);
@@ -114,15 +113,6 @@
       .card{padding:2rem}
       .stack{gap:20px}
     }
-    @supports (height: 100svh) {
-      .hero{ height:100svh }
-      body{ height:100svh }
-    }
-    @supports (height: 100dvh) {
-      /* Falls Browser 100svh nicht kennt, nutzen wir sichtbare Höhe via dvh */
-      .hero{ height:100dvh }
-      body{ height:100dvh }
-    }
   </style>
 </head>
 <body>
@@ -141,16 +131,16 @@
     <div class="hero__scrim" aria-hidden="true"></div>
 
     <!-- Logo oben drüber (bitte Datei 'logo.png' hochladen) -->
-    <img class="logo" src="logo.png" alt="Logo" />
+    <img class="logo" src="logo.svg" alt="Logo" />
 
     <!-- Overlay Card am Ende der Seite -->
     <section class="card" aria-labelledby="fotos">
       <div class="stack">
-        <a class="btn btn--primary" id="fotos" href="#hochzeits-fotos">
-          Hochzeits Fotos
+        <a class="btn btn--primary" id="fotos" href="https://hochgefuehle.pixieset.com/lenaxsascha/">
+          Fotogalerie
           <small>Passwort: <code>lenaxsascha</code></small>
         </a>
-        <a class="btn btn--secondary" href="#fotobox-fotos">Fotobox Fotos</a>
+        <a class="btn btn--secondary" href="#fotobox-fotos">Fotobox Aufnahmen</a>
       </div>
     </section>
   </header>
