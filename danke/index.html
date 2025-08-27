@@ -1,1 +1,162 @@
-test
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Lena & Sascha – Fotos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --peach:#f4c6a5;
+      --peach-2:#f7d6be;
+      --purple:#3b0066;
+      --purple-50:#cbb3db;
+      --text:#1f1930;
+      --white:#ffffff;
+      --radius:20px;
+      --shadow:0 10px 30px rgba(0,0,0,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins', sans-serif;
+      color:var(--text);
+      background:var(--peach);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      height:100vh;           /* full height */
+      overflow:hidden;        /* no scrollbar */
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      position:relative;
+      height:100vh;           /* Fallback */
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;  /* Card ans Ende */
+      align-items:center;
+      overflow:hidden;
+      isolation:isolate;
+      background:var(--peach);
+      padding-bottom:calc(20px + env(safe-area-inset-bottom, 0px));  /* 20px + Safe Area */
+    }
+    .hero picture, .hero .hero__img{position:absolute; inset:0}
+    .hero__img{
+      width:100%; height:100%;
+      object-fit:cover; 
+      object-position:center;
+      z-index:-1;
+      filter:saturate(0.98) contrast(1.02);
+    }
+    @media (max-width:600px){
+      .hero__img{object-position:top center}
+    }
+    @media (min-width:601px) and (max-width:1024px){
+      .hero__img{object-position:center 30%}
+    }
+
+    .hero__scrim{
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.35) 70%, rgba(0,0,0,.25) 100%);
+      z-index:0;
+    }
+
+    /* ===== Logo oben drüber ===== */
+    .logo{
+      position:absolute; top:16px; left:50%; transform:translateX(-50%);
+      z-index:2;
+      max-width:min(60vw, 280px);
+      height:auto;
+      filter:drop-shadow(0 8px 24px rgba(0,0,0,.25));
+      pointer-events:none;
+    }
+
+    /* ===== Overlay Card ===== */
+    .card{
+      z-index:2;               /* über dem Bild */
+      margin:0;                /* kein negatives Margin */
+      width:min(92%,900px);
+      background:var(--peach);
+      border-radius:36px;
+      box-shadow:var(--shadow);
+      padding:clamp(1rem, 2vw, 1.5rem);
+      backdrop-filter:saturate(1.1);
+    }
+
+    .stack{display:grid; gap:clamp(14px, 1.6vw, 18px)}
+
+    .btn{
+      display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
+      text-decoration:none; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      padding:1.25rem 1rem; border-radius:18px; border:2px solid transparent;
+      transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
+      box-shadow:var(--shadow);
+      width:100%;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn--primary{background:var(--purple); color:var(--white)}
+    .btn--primary:hover{filter:brightness(1.05)}
+    .btn--secondary{background:var(--purple-50); color:#2a1743}
+
+    .btn small{font-weight:400; font-size:0.85em; margin-top:0.35rem; opacity:0.9}
+    .btn code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size:1em; background:rgba(255,255,255,.25); padding:.15rem .4rem; border-radius:6px}
+
+    /* ===== Layout helpers ===== */
+    .container{ width:min(92%, 1000px); margin-inline:auto }
+
+    @media (min-width:720px){
+      .card{padding:2rem}
+      .stack{gap:20px}
+    }
+    @supports (height: 100svh) {
+      .hero{ height:100svh }
+      body{ height:100svh }
+    }
+    @supports (height: 100dvh) {
+      /* Falls Browser 100svh nicht kennt, nutzen wir sichtbare Höhe via dvh */
+      .hero{ height:100dvh }
+      body{ height:100dvh }
+    }
+  </style>
+</head>
+<body>
+  <!-- Vollflächiger Hero mit Hintergrundbild -->
+  <header class="hero" role="banner">
+    <picture>
+      <!-- Desktop (≥1025px) -->
+      <source media="(min-width:1025px)" srcset="hero-desktop.jpg">
+      <!-- Tablet (601–1024px) -->
+      <source media="(min-width:601px) and (max-width:1024px)" srcset="hero-tablet.jpg">
+      <!-- Mobile (≤600px) -->
+      <source media="(max-width:600px)" srcset="hero-mobile.jpg">
+      <!-- Fallback -->
+      <img class="hero__img" src="hero-desktop.jpg" alt="Brautpaar unter Bäumen" />
+    </picture>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <!-- Logo oben drüber (bitte Datei 'logo.png' hochladen) -->
+    <img class="logo" src="logo.png" alt="Logo" />
+
+    <!-- Overlay Card am Ende der Seite -->
+    <section class="card" aria-labelledby="fotos">
+      <div class="stack">
+        <a class="btn btn--primary" id="fotos" href="#hochzeits-fotos">
+          Hochzeits Fotos
+          <small>Passwort: <code>lenaxsascha</code></small>
+        </a>
+        <a class="btn btn--secondary" href="#fotobox-fotos">Fotobox Fotos</a>
+      </div>
+    </section>
+  </header>
+
+  <script>
+    // optional: nichts weiter nötig, alles in 100vh
+  </script>
+</body>
+</html>
