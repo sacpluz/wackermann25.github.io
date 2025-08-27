@@ -3,10 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Lena & Sascha – Fotos</title>
+  
+  <!-- Meta Basics -->
+  <title>Lena & Sascha – Hochzeitsfotos</title>
+  <meta name="description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <!-- Social / Open Graph -->
+  <meta property="og:title" content="Lena & Sascha – Hochzeitsfotos" />
+  <meta property="og:description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
+  <meta property="og:image" content="preview.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wackermann25.de/" />
+
+  <!-- Twitter / WhatsApp Preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lena & Sascha – Hochzeitsfotos" />
+  <meta name="twitter:description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
+  <meta name="twitter:image" content="preview.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --peach:#f4c6a5;
@@ -28,23 +52,23 @@
       line-height:1.5;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      height:100vh;           /* full height */
-      overflow:hidden;        /* no scrollbar */
+      height:100vh;
+      overflow:hidden;
     }
 
     /* ===== Hero ===== */
     .hero{
       position:relative;
-      height:100vh;           /* Fallback */
+      height:100vh;
       min-height:100vh;
       display:flex;
       flex-direction:column;
-      justify-content:flex-end;  /* Card ans Ende */
+      justify-content:flex-end;
       align-items:center;
       overflow:hidden;
       isolation:isolate;
       background:var(--peach);
-      padding-bottom:calc(20px + env(safe-area-inset-bottom, 0px));  /* 20px + Safe Area */
+      padding-bottom:calc(60px + env(safe-area-inset-bottom, 0px));
     }
     .hero picture, .hero .hero__img{position:absolute; inset:0}
     .hero__img{
@@ -67,7 +91,7 @@
       z-index:0;
     }
 
-    /* ===== Logo oben drüber ===== */
+    /* ===== Logo ===== */
     .logo{
       position:absolute; top:16px; left:50%; transform:translateX(-50%);
       z-index:2;
@@ -76,11 +100,18 @@
       filter:drop-shadow(0 8px 24px rgba(0,0,0,.25));
       pointer-events:none;
     }
+    @media (min-width:1025px){
+      .logo{
+        left:32px;
+        top:32px;
+        transform:none;
+        max-width:200px; /* optional, gleiche Größe wie mobil */
+      }
+    }
 
-    /* ===== Overlay Card ===== */
     .card{
-      z-index:2;               /* über dem Bild */
-      margin:0;                /* kein negatives Margin */
+      z-index:2;
+      margin:0;
       width:min(92%,900px);
       background:var(--peach);
       border-radius:36px;
@@ -93,7 +124,7 @@
 
     .btn{
       display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
-      text-decoration:none; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      text-decoration:none; font-weight:700; letter-spacing:.08em;
       padding:1.25rem 1rem; border-radius:18px; border:2px solid transparent;
       transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
       box-shadow:var(--shadow);
@@ -107,56 +138,44 @@
     .btn small{font-weight:400; font-size:0.85em; margin-top:0.35rem; opacity:0.9}
     .btn code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size:1em; background:rgba(255,255,255,.25); padding:.15rem .4rem; border-radius:6px}
 
-    /* ===== Layout helpers ===== */
     .container{ width:min(92%, 1000px); margin-inline:auto }
 
     @media (min-width:720px){
       .card{padding:2rem}
       .stack{gap:20px}
     }
+
     @supports (height: 100svh) {
       .hero{ height:100svh }
       body{ height:100svh }
     }
     @supports (height: 100dvh) {
-      /* Falls Browser 100svh nicht kennt, nutzen wir sichtbare Höhe via dvh */
       .hero{ height:100dvh }
       body{ height:100dvh }
     }
   </style>
 </head>
 <body>
-  <!-- Vollflächiger Hero mit Hintergrundbild -->
   <header class="hero" role="banner">
     <picture>
-      <!-- Desktop (≥1025px) -->
       <source media="(min-width:1025px)" srcset="hero-desktop.jpg">
-      <!-- Tablet (601–1024px) -->
       <source media="(min-width:601px) and (max-width:1024px)" srcset="hero-tablet.jpg">
-      <!-- Mobile (≤600px) -->
       <source media="(max-width:600px)" srcset="hero-mobile.jpg">
-      <!-- Fallback -->
       <img class="hero__img" src="hero-desktop.jpg" alt="Brautpaar unter Bäumen" />
     </picture>
     <div class="hero__scrim" aria-hidden="true"></div>
 
-    <!-- Logo oben drüber (bitte Datei 'logo.png' hochladen) -->
-    <img class="logo" src="logo.png" alt="Logo" />
+    <img class="logo" src="logo.svg" alt="Logo" />
 
-    <!-- Overlay Card am Ende der Seite -->
     <section class="card" aria-labelledby="fotos">
       <div class="stack">
-        <a class="btn btn--primary" id="fotos" href="#hochzeits-fotos">
-          Hochzeits Fotos
+        <a class="btn btn--primary" id="fotos" href="https://hochgefuehle.pixieset.com/lenaxsascha/">
+          Fotogalerie (Guest)
           <small>Passwort: <code>lenaxsascha</code></small>
         </a>
-        <a class="btn btn--secondary" href="#fotobox-fotos">Fotobox Fotos</a>
+        <a class="btn btn--secondary" href="https://photos.app.goo.gl/SCcVnvfjLQyvmfkX8">Fotobox Aufnahmen</a>
       </div>
     </section>
   </header>
-
-  <script>
-    // optional: nichts weiter nötig, alles in 100vh
-  </script>
 </body>
 </html>
