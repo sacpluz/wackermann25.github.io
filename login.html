@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Privater Zugang – Wackermann</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --peach:#f4c6a5; --purple:#3b0066; --text:#1f1930; --white:#fff; --shadow:0 10px 30px rgba(0,0,0,.12) }
+    *{ box-sizing:border-box }
+    body{ margin:0; font-family:'Poppins',sans-serif; background:var(--peach); min-height:100vh; display:grid; place-items:center; color:var(--text) }
+    .card{ width:min(92%,380px); background:var(--white); border-radius:24px; box-shadow:var(--shadow); padding:1.25rem 1.25rem 1.5rem }
+    h1{ font-size:1.25rem; margin:.25rem 0 0 }
+    p{ margin:.25rem 0 .75rem 0 }
+    label{ font-weight:600; font-size:.9rem }
+    input[type="password"]{ width:100%; padding:.8rem 1rem; border-radius:12px; border:1px solid #d9d4e4; margin:.35rem 0 1rem; font-size:1rem }
+    button{ width:100%; padding:.9rem 1rem; border-radius:12px; border:0; background:var(--purple); color:var(--white); font-weight:700; letter-spacing:.02em; cursor:pointer; transition:filter .2s ease }
+    button:hover{ filter:brightness(1.05) }
+    .hint{ margin-top:.75rem; font-size:.85rem; opacity:.8; text-align:center }
+    .error{ background:#ffe8e8; color:#a40000; border:1px solid #f3b3b3; border-radius:10px; padding:.6rem .8rem; font-size:.9rem; margin-bottom:.75rem }
+    .footer{ text-align:center; font-size:.7rem; color:rgba(31,25,48,0.6); margin-top:.85rem }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="h">
+    <h1 id="h">Privater Zugang</h1>
+    <p>Seite nur für Familie & Freunde</p>
+
+    <div id="err" class="error" style="display:none">Falscher Zugangscode</div>
+
+    <form method="post" action="/api/login">
+      <label for="pw">Zugangscode</label>
+      <input type="password" id="pw" name="pw" placeholder="Code eingeben" autocomplete="current-password" required>
+      <button type="submit">Weiter</button>
+      <p class="hint">Den Zugangscode findest du in unserer Dankeskarte – damit kannst du alle Fotos ansehen und herunterladen</p>
+    </form>
+
+    <p class="footer">Private Webseite · Kein Impressum/Datenschutz erforderlich (§ 55 RStV)</p>
+  </main>
+  <script>
+    // simple error display via query param
+    if (new URL(location.href).searchParams.get('err')) {
+      document.getElementById('err').style.display = 'block'
+    }
+  </script>
+</body>
+</html>
