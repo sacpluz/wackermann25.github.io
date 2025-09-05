@@ -1,20 +1,3 @@
-<!-- 
-   =====================================================
-   |   (づ｡◕‿‿◕｡)づ    COPYRIGHT NOTICE              |
-   =====================================================
-   This website is lovingly crafted for Lena & Sascha ❤️
-   All images are private. Please respect the couple's
-   memories and don't share without permission.
-
-   If you're peeking into the source code:
-   → You're officially part of the 1% who still does.
-   → May your console be bug-free and your CSS aligned.
-   → Also: Yes, the password is in the HTML. Deal with it. ;)
-
-   Built with ✨ love, 🍰 sugar and a pinch of ☕.
-   =====================================================
--->
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -27,26 +10,23 @@
   <meta name="robots" content="noindex, nofollow" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" /><!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Lena & Sascha – Hochzeitsfotos</title>
-  <meta name="description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
-  <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
+
+  <!-- Social / Open Graph -->
   <meta property="og:title" content="Lena & Sascha – Hochzeitsfotos" />
   <meta property="og:description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
   <meta property="og:image" content="/preview.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://wackermann25.de/" />
+
+  <!-- Twitter / WhatsApp Preview -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Lena & Sascha – Hochzeitsfotos" />
   <meta name="twitter:description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
   <meta name="twitter:image" content="/preview.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -143,35 +123,31 @@
 
     .stack{display:grid; gap:clamp(14px, 1.6vw, 18px)}
 
-    /* ===== Notice / Zugangscode ===== */
-    .notice{
-      display:flex; align-items:center; gap:.75rem;
-      background:var(--purple-10);
-      border:2px solid var(--purple-50);
-      color:#2a1743;
-      border-radius:16px;
-      padding:.75rem 1rem;
-      line-height:1.3;
+    /* ===== Kompakter Zugangscode-Hinweis ===== */
+    .access-hint{
+      font-size:0.9rem;
+      color:var(--text);
+      margin:0 0 .5rem 0; /* kompakt oberhalb der Buttons */
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:.4rem;
+      text-align:center;
+      justify-content:center;
     }
-    .notice__icon{
+    .access-icon{
       flex:0 0 auto;
-      width:22px; height:22px;
-      display:grid; place-items:center;
-      border-radius:8px;
-      background:var(--purple-50);
-      color:var(--white);
-      font-weight:700;
+      font-size:1rem;
+      line-height:1;
     }
-    .notice__text{font-size:.95rem}
-    .chip{
-      display:inline-block;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-      font-weight:700;
-      padding:.15rem .5rem;
-      border-radius:8px;
+    .access-hint code{
       background:var(--purple);
       color:var(--white);
-      letter-spacing:.06em;
+      padding:.15rem .4rem;
+      border-radius:6px;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      font-weight:600;
+      letter-spacing:.05em;
     }
 
     /* ===== Buttons ===== */
@@ -196,6 +172,7 @@
       color:var(--purple);
       border-color:var(--purple);
       box-shadow:none;
+      border-style:solid;
     }
     .btn--tertiary:hover{
       background:var(--purple-10);
@@ -208,7 +185,6 @@
     @media (min-width:720px){
       .card{padding:2rem}
       .stack{gap:20px}
-      .notice{padding:1rem 1.25rem}
     }
 
     @supports (height: 100svh) {
@@ -218,6 +194,16 @@
     @supports (height: 100dvh) {
       .hero{ height:100dvh }
       body{ height:100dvh }
+    }
+
+    /* ===== Footer ===== */
+    .footer{
+      text-align:center;
+      font-size:0.7rem;
+      color:rgba(31,25,48,0.6);
+      padding:1rem;
+      position:relative;
+      z-index:2;
     }
   </style>
 </head>
@@ -236,14 +222,12 @@
     <section class="card" aria-labelledby="fotos">
       <div class="stack">
 
-        <!-- Zugangscode-Hinweis -->
-        <div class="notice" role="status" aria-live="polite">
-          <span class="notice__icon" aria-hidden="true">🔒</span>
-          <p class="notice__text">
-            Ein Zugangscode für alle Galerien & Downloads:
-            <code class="chip">0407</code>
-          </p>
-        </div>
+        <!-- Kompakter Zugangscode-Hinweis -->
+        <p class="access-hint" role="status" aria-live="polite">
+          <span class="access-icon" aria-hidden="true">🔒</span>
+          Ein Zugangscode für alle Galerien & Downloads:
+          <code>0407</code>
+        </p>
 
         <!-- Buttons -->
         <a class="btn btn--primary" id="fotos" target="_blank" href="https://wackermann.pixieset.com/hochgefuhle/">
@@ -258,7 +242,7 @@
           Fotobox
         </a>
 
-        <!-- Beispiel für eine ausgeblendete zukünftige Galerie
+        <!-- Beispiel für eine zukünftige Galerie
         <a class="btn btn--tertiary" target="_blank" href="https://wackermann.pixieset.com/sektempfang/">
           Sektempfang
         </a>
@@ -267,8 +251,10 @@
       </div>
     </section>
   </header>
-</body>
-</html>
-  </header>
+
+  <footer class="footer">
+    <p>Dies ist eine private Webseite für Familie & Freunde  
+    Kein Impressum oder Datenschutz erforderlich (§ 55 RStV)</p>
+  </footer>
 </body>
 </html>
