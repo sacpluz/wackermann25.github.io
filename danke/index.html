@@ -27,23 +27,26 @@
   <meta name="robots" content="noindex, nofollow" />
 
   <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" /><!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Lena & Sascha – Hochzeitsfotos</title>
+  <meta name="description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-
-  <!-- Social / Open Graph -->
   <meta property="og:title" content="Lena & Sascha – Hochzeitsfotos" />
   <meta property="og:description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
   <meta property="og:image" content="/preview.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://wackermann25.de/" />
-
-  <!-- Twitter / WhatsApp Preview -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Lena & Sascha – Hochzeitsfotos" />
   <meta name="twitter:description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
   <meta name="twitter:image" content="/preview.jpg" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,6 +57,7 @@
       --peach-2:#f7d6be;
       --purple:#3b0066;
       --purple-50:#cbb3db;
+      --purple-10:#efe7f4;
       --text:#1f1930;
       --white:#ffffff;
       --radius:20px;
@@ -122,7 +126,7 @@
         left:32px;
         top:32px;
         transform:none;
-        max-width:200px; /* optional, gleiche Größe wie mobil */
+        max-width:200px;
       }
     }
 
@@ -139,27 +143,72 @@
 
     .stack{display:grid; gap:clamp(14px, 1.6vw, 18px)}
 
+    /* ===== Notice / Zugangscode ===== */
+    .notice{
+      display:flex; align-items:center; gap:.75rem;
+      background:var(--purple-10);
+      border:2px solid var(--purple-50);
+      color:#2a1743;
+      border-radius:16px;
+      padding:.75rem 1rem;
+      line-height:1.3;
+    }
+    .notice__icon{
+      flex:0 0 auto;
+      width:22px; height:22px;
+      display:grid; place-items:center;
+      border-radius:8px;
+      background:var(--purple-50);
+      color:var(--white);
+      font-weight:700;
+    }
+    .notice__text{font-size:.95rem}
+    .chip{
+      display:inline-block;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      font-weight:700;
+      padding:.15rem .5rem;
+      border-radius:8px;
+      background:var(--purple);
+      color:var(--white);
+      letter-spacing:.06em;
+    }
+
+    /* ===== Buttons ===== */
     .btn{
       display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
       text-decoration:none; font-weight:700; letter-spacing:.08em;
       padding:1.25rem 1rem; border-radius:18px; border:2px solid transparent;
-      transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
+      transition:transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
       box-shadow:var(--shadow);
       width:100%;
     }
     .btn:active{transform:translateY(1px)}
+
     .btn--primary{background:var(--purple); color:var(--white)}
     .btn--primary:hover{filter:brightness(1.05)}
+
     .btn--secondary{background:var(--purple-50); color:#2a1743}
+    .btn--secondary:hover{filter:brightness(1.04)}
+
+    .btn--tertiary{
+      background:transparent;
+      color:var(--purple);
+      border-color:var(--purple);
+      box-shadow:none;
+    }
+    .btn--tertiary:hover{
+      background:var(--purple-10);
+    }
 
     .btn small{font-weight:400; font-size:0.85em; margin-top:0.35rem; opacity:0.9}
-    .btn code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size:1em; background:rgba(255,255,255,.25); padding:.15rem .4rem; border-radius:6px}
 
     .container{ width:min(92%, 1000px); margin-inline:auto }
 
     @media (min-width:720px){
       .card{padding:2rem}
       .stack{gap:20px}
+      .notice{padding:1rem 1.25rem}
     }
 
     @supports (height: 100svh) {
@@ -186,24 +235,40 @@
 
     <section class="card" aria-labelledby="fotos">
       <div class="stack">
-          <small>Passwort fpr alle Gallerien inkl. Download: <code>0407</code></small>
+
+        <!-- Zugangscode-Hinweis -->
+        <div class="notice" role="status" aria-live="polite">
+          <span class="notice__icon" aria-hidden="true">🔒</span>
+          <p class="notice__text">
+            Ein Zugangscode für alle Galerien & Downloads:
+            <code class="chip">0407</code>
+          </p>
+        </div>
+
+        <!-- Buttons -->
         <a class="btn btn--primary" id="fotos" target="_blank" href="https://wackermann.pixieset.com/hochgefuhle/">
-          Galerie Hochgefühle         
-        </a>
-        <a class="btn btn--primary" id="fotos" target="_blank" href="https://wackermann.pixieset.com/joshua/">
-          Galerie Joshua
-          <small>Passwort: <code>0407</code></small>
-        </a>
-        <a class="btn btn--primary" id="fotos" target="_blank" href="https://wackermann.pixieset.com/fotobox/">
-          Fotobox
-          <small>Passwort: <code>0407</code></small>
-        </a>
-        <!--<a class="btn btn--primary" id="fotos" target="_blank" href="https://wackermann.pixieset.com/sektempfang/">
           Galerie Hochgefühle
-          <small>Passwort: <code>2025</code></small>
-        </a>-->                 
+        </a>
+
+        <a class="btn btn--secondary" target="_blank" href="https://wackermann.pixieset.com/joshua/">
+          Galerie Joshua
+        </a>
+
+        <a class="btn btn--tertiary" target="_blank" href="https://wackermann.pixieset.com/fotobox/">
+          Fotobox
+        </a>
+
+        <!-- Beispiel für eine ausgeblendete zukünftige Galerie
+        <a class="btn btn--tertiary" target="_blank" href="https://wackermann.pixieset.com/sektempfang/">
+          Sektempfang
+        </a>
+        -->
+
       </div>
     </section>
+  </header>
+</body>
+</html>
   </header>
 </body>
 </html>
