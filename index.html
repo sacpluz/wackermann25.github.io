@@ -1,7 +1,9 @@
+
 <!-- 
    =====================================================
    |   (づ｡◕‿‿◕｡)づ    COPYRIGHT NOTICE              |
    =====================================================
+
    This website is lovingly crafted for Lena & Sascha ❤️
    All images are private. Please respect the couple's
    memories and don't share without permission.
@@ -9,7 +11,6 @@
    If you're peeking into the source code:
    → You're officially part of the 1% who still does.
    → May your console be bug-free and your CSS aligned.
-   → Also: Yes, the password is in the HTML. Deal with it. ;)
 
    Built with ✨ love, 🍰 sugar and a pinch of ☕.
    =====================================================
@@ -27,14 +28,14 @@
   <meta name="robots" content="noindex, nofollow" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="alternate icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
 
   <!-- Social / Open Graph -->
   <meta property="og:title" content="Lena & Sascha – Hochzeitsfotos" />
   <meta property="og:description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
-  <meta property="og:image" content="https://wackermann25.de/preview.jpg" />
+  <meta property="og:image" content="/preview.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://wackermann25.de/" />
 
@@ -42,7 +43,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Lena & Sascha – Hochzeitsfotos" />
   <meta name="twitter:description" content="Private Hochzeitsfotos und Fotobox-Aufnahmen von Lena & Sascha. Zugang nur für Gäste." />
-  <meta name="twitter:image" content="https://wackermann25.de/preview.jpg" />
+  <meta name="twitter:image" content="/preview.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +55,7 @@
       --peach-2:#f7d6be;
       --purple:#3b0066;
       --purple-50:#cbb3db;
+      --purple-10:#efe7f4;
       --text:#1f1930;
       --white:#ffffff;
       --radius:20px;
@@ -122,7 +124,7 @@
         left:32px;
         top:32px;
         transform:none;
-        max-width:200px; /* optional, gleiche Größe wie mobil */
+        max-width:200px;
       }
     }
 
@@ -139,21 +141,62 @@
 
     .stack{display:grid; gap:clamp(14px, 1.6vw, 18px)}
 
+    /* ===== Kompakter Zugangscode-Hinweis ===== */
+    .access-hint{
+      font-size:0.9rem;
+      color:var(--text);
+      margin:0 0 .5rem 0; /* kompakt oberhalb der Buttons */
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:.4rem;
+      text-align:center;
+      justify-content:center;
+    }
+    .access-icon{
+      flex:0 0 auto;
+      font-size:1rem;
+      line-height:1;
+    }
+    .access-hint code{
+      background:var(--purple);
+      color:var(--white);
+      padding:.15rem .4rem;
+      border-radius:6px;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      font-weight:600;
+      letter-spacing:.05em;
+    }
+
+    /* ===== Buttons ===== */
     .btn{
       display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
       text-decoration:none; font-weight:700; letter-spacing:.08em;
       padding:1.25rem 1rem; border-radius:18px; border:2px solid transparent;
-      transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
+      transition:transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
       box-shadow:var(--shadow);
       width:100%;
     }
     .btn:active{transform:translateY(1px)}
+
     .btn--primary{background:var(--purple); color:var(--white)}
     .btn--primary:hover{filter:brightness(1.05)}
+
     .btn--secondary{background:var(--purple-50); color:#2a1743}
+    .btn--secondary:hover{filter:brightness(1.04)}
+
+    .btn--tertiary{
+      background:transparent;
+      color:var(--purple);
+      border-color:var(--purple);
+      box-shadow:none;
+      border-style:solid;
+    }
+    .btn--tertiary:hover{
+      background:var(--purple-10);
+    }
 
     .btn small{font-weight:400; font-size:0.85em; margin-top:0.35rem; opacity:0.9}
-    .btn code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size:1em; background:rgba(255,255,255,.25); padding:.15rem .4rem; border-radius:6px}
 
     .container{ width:min(92%, 1000px); margin-inline:auto }
 
@@ -170,29 +213,46 @@
       .hero{ height:100dvh }
       body{ height:100dvh }
     }
+
+    /* ===== Footer ===== */
+    .footer{
+      text-align:center;
+      font-size:0.7rem;
+      color:rgba(31,25,48,0.6);
+      padding:1rem;
+      position:relative;
+      z-index:2;
+    }
   </style>
 </head>
 <body>
   <header class="hero" role="banner">
     <picture>
-      <source media="(min-width:1025px)" srcset="hero-desktop.jpg">
-      <source media="(min-width:601px) and (max-width:1024px)" srcset="hero-tablet.jpg">
-      <source media="(max-width:600px)" srcset="hero-mobile.jpg">
-      <img class="hero__img" src="hero-desktop.jpg" alt="Brautpaar unter Bäumen" />
+      <source media="(min-width:1025px)" srcset="/hero-desktop.jpg">
+      <source media="(min-width:601px) and (max-width:1024px)" srcset="/hero-tablet.jpg">
+      <source media="(max-width:600px)" srcset="/hero-mobile.jpg">
+      <img class="hero__img" src="/hero-desktop.jpg" alt="Brautpaar unter Bäumen" />
     </picture>
     <div class="hero__scrim" aria-hidden="true"></div>
 
-    <img class="logo" src="logo.svg" alt="Logo" />
+    <img class="logo" src="/logo.svg" alt="Logo" />
 
     <section class="card" aria-labelledby="fotos">
       <div class="stack">
-        <a class="btn btn--primary" id="fotos" target="_blank"  href="https://hochgefuehle.pixieset.com/lenaxsascha/">
-          Fotogalerie (Guest)
-          <small>Passwort: <code>lenaxsascha</code></small>
+
+         <!-- Buttons -->
+         
+        <a class="btn btn--primary" target="_blank" href="https://wackermann.pixieset.com/sektempfang/">
+          Freie Trauung & Sektempfang
         </a>
-        <!-- <a class="btn btn--secondary" target="_blank" href="https://photos.app.goo.gl/SCcVnvfjLQyvmfkX8">Fotobox Aufnahmen</a> -->
+
       </div>
     </section>
   </header>
+
+  <footer class="footer">
+    <p>Dies ist eine private Webseite für Familie & Freunde  
+    Kein Impressum oder Datenschutz erforderlich (§ 55 RStV)</p>
+  </footer>
 </body>
 </html>
